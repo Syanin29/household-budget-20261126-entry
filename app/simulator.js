@@ -44,8 +44,10 @@ function update() {
   values.makan.textContent = fmtRp(cutMakan) + ' / bulan';
   outCut.textContent = fmtRp(cut) + ' / bulan';
   outRemainder.textContent = fmtRp(remainder);
-  outYearly.textContent = fmtRp(cut * 12) + ' / tahun';
-  outSavings.textContent = fmtRp(savings) + ' / bulan';
+  // Label kolom sudah menyebut "/ tahun" dan "/ bulan", jadi nilainya tampil
+  // polos agar muat satu baris tanpa membungkus di tengah angka.
+  outYearly.textContent = fmtRp(cut * 12);
+  outSavings.textContent = fmtRp(savings);
   outBuffer.textContent = bufferDays.toFixed(1).replace('.', ',') + ' hari';
   outNote.textContent = cut === 0
     ? 'Geser salah satu slider di atas untuk melihat dampaknya. Coba tombol “Potong Rp 200.000 langganan”.'
@@ -57,12 +59,19 @@ function update() {
 
 Object.values(sliders).forEach((s) => s.addEventListener('input', update));
 
+// Preset "Potong Rp 200.000 langganan": hiburan dipotong 200 ribu, dua slider
+// lain tetap nol. Dijalankan sekali saat halaman dimuat supaya simulator
+// langsung hidup berangka, bukan menampilkan Rp 0 di semua hasil.
+function applyPreset200k() {
+  sliders.hiburan.value = '200000';
+  sliders.makanLuar.value = '0';
+  sliders.makan.value = '0';
+  update();
+}
+
 const preset = document.getElementById('preset-200k');
 if (preset) {
-  preset.addEventListener('click', () => {
-    sliders.hiburan.value = '200000';
-    update();
-  });
+  preset.addEventListener('click', applyPreset200k);
 }
 const reset = document.getElementById('reset-sim');
 if (reset) {
@@ -74,4 +83,4 @@ if (reset) {
   });
 }
 
-update();
+applyPreset200k();

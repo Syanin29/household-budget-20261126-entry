@@ -2,6 +2,7 @@
 // Dipakai ulang untuk tiap pengambilan ulang: jalankan `node tools/shots.mjs` dari root repo.
 // Hasil: 4 JPEG di screenshots/ (desktop 1280x800 x3 + ponsel 390x844 x1),
 // masing-masing sisi panjang <= 1280px dan ukuran <= 256 KiB (gate screenshots).
+// Keempatnya halaman berbeda: dashboard, anggaran, simulator, tren (ponsel).
 
 import { createRequire } from 'node:module';
 import { createServer } from 'node:http';
@@ -68,7 +69,7 @@ const SHOTS = [
   { file: '1-dashboard-desktop.jpg', page: 'index.html', width: 1280, height: 800 },
   { file: '2-anggaran-desktop.jpg', page: 'anggaran.html', width: 1280, height: 800 },
   { file: '3-simulator-desktop.jpg', page: 'simulator.html', width: 1280, height: 800 },
-  { file: '4-dashboard-phone.jpg', page: 'index.html', width: 390, height: 844 },
+  { file: '4-tren-phone.jpg', page: 'tren.html', width: 390, height: 844 },
 ];
 
 const PORT = 8123;

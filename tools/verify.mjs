@@ -2,7 +2,7 @@
 // Jalankan `node tools/verify.mjs` dari root repo. Keluar 0 hanya bila SEMUA lolos:
 //   A. Rekonsiliasi data (dari data.js, tanpa peramban): 48 transaksi; tiap kategori
 //      berjumlah sama dengan transaksinya; total terpakai 9.853.000;
-//      pemasukan - terpakai - tabungan = sisa aman 847.000; anggaran total 10.100.000;
+//      pemasukan - terpakai - tabungan = sisa aman 847.000; anggaran total 10.450.000;
 //      kelompok kebutuhan/keinginan/lain-lain cocok dengan baris November tren;
 //      tiap bulan tren: kebutuhan + keinginan + lain-lain = terpakai;
 //      belanja makan November naik 18% (pembulatan) vs Oktober.
@@ -55,7 +55,7 @@ const spent = data.totalSpent(TRANSACTIONS);
 check('total-terpakai-9853000', spent === 9853000, 'ditemukan ' + spent);
 check('sisa-aman-847000', data.safeRemainder(TRANSACTIONS, SAVINGS) === 847000,
   'ditemukan ' + data.safeRemainder(TRANSACTIONS, SAVINGS));
-check('anggaran-total-10100000', data.totalBudget() === 10100000, 'ditemukan ' + data.totalBudget());
+check('anggaran-total-10450000', data.totalBudget() === 10450000, 'ditemukan ' + data.totalBudget());
 const byGroup = data.spentByGroup(TRANSACTIONS);
 check('kelompok-kebutuhan-6710000', byGroup.needs === 6710000, 'ditemukan ' + byGroup.needs);
 check('kelompok-keinginan-1943000', byGroup.wants === 1943000, 'ditemukan ' + byGroup.wants);
@@ -143,7 +143,7 @@ await new Promise((r) => server.listen(8124, '127.0.0.1', r));
 
 const PAGES = [
   { file: 'index.html', figures: ['12.500.000', '9.853.000', '847.000', '1.800.000'] },
-  { file: 'anggaran.html', figures: ['10.100.000', '9.853.000'] },
+  { file: 'anggaran.html', figures: ['10.450.000', '9.853.000'] },
   { file: 'transaksi.html', figures: ['9.853.000'] },
   { file: 'tren.html', figures: ['9.853.000'] },
   { file: 'simulator.html', figures: ['847.000'] },
@@ -225,7 +225,7 @@ function pngSize(buf) {
   if (buf.length < 24 || buf.toString('ascii', 1, 4) !== 'PNG') return null;
   return { w: buf.readUInt32BE(16), h: buf.readUInt32BE(20) };
 }
-const expectedShots = ['1-dashboard-desktop.jpg', '2-anggaran-desktop.jpg', '3-simulator-desktop.jpg', '4-dashboard-phone.jpg'];
+const expectedShots = ['1-dashboard-desktop.jpg', '2-anggaran-desktop.jpg', '3-simulator-desktop.jpg', '4-tren-phone.jpg'];
 for (const f of expectedShots) {
   const path = join(shotsDir, f);
   const exists = existsSync(path);

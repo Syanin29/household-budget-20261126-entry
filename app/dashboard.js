@@ -37,7 +37,7 @@ const donutParts = [
 ];
 donutParts.centerText = fmtRp(state.remainder).replace('Rp ', 'Rp ');
 const donutHost = document.getElementById('donut');
-if (donutHost) donutHost.innerHTML = donutChart(donutParts, 240);
+if (donutHost) donutHost.innerHTML = donutChart(donutParts, 190);
 
 // Bar aturan 50/30/20: aktual vs target, dengan lampu status.
 const rulesHost = document.getElementById('rules-503020');

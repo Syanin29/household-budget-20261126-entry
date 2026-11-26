@@ -12,6 +12,17 @@ const tableBody = document.getElementById('budget-rows');
 const totalsRow = document.getElementById('budget-totals');
 const savedNote = document.getElementById('saved-note');
 
+// Tampilan anggaran memakai pemisah ribuan (titik), sama seperti fmtRp di
+// halaman lain; yang disimpan ke localStorage tetap angka mentah.
+function fmtBudget(n) {
+  return fmtRp(n).replace('Rp ', '');
+}
+
+function parseBudget(text) {
+  const digits = String(text).replace(/[^0-9]/g, '');
+  return digits === '' ? NaN : Number(digits);
+}
+
 function render() {
   const state = computeState(store);
   tableBody.innerHTML = CATEGORIES.map((c) => {
@@ -22,8 +33,7 @@ function render() {
     const st = categoryStatus(spent, budget);
     return '<tr><td><span class="cat-cell">' + iconSvg(c.icon, 20) + ' ' + c.name + '</span>'
       + '<div class="hint">' + c.blurb + '</div></td>'
-      + '<td class="num"><label class="hint" for="budget-' + c.id + '">Anggaran</label>'
-      + '<input type="number" id="budget-' + c.id + '" data-category="' + c.id + '" value="' + budget + '" min="0" step="1000" aria-label="Anggaran ' + c.name + '"></td>'
+      + '<td class="num"><input type="text" inputmode="numeric" class="budget-input" id="budget-' + c.id + '" data-category="' + c.id + '" value="' + fmtBudget(budget) + '" aria-label="Anggaran ' + c.name + ' (rupiah)"></td>'
       + '<td class="num">' + fmtRp(spent) + '</td>'
       + '<td class="num">' + fmtRp(left) + '</td>'
       + '<td><div class="bar-track"><div class="bar-fill ' + (st.tone === 'good' ? '' : st.tone) + '" style="width:' + Math.min(100, pct).toFixed(1) + '%"></div></div>'
@@ -37,10 +47,11 @@ function render() {
     + '<td><strong>' + (state.underBudget >= 0 ? 'Di bawah anggaran' : 'Melewati anggaran') + '</strong></td>';
 
   tableBody.querySelectorAll('input[data-category]').forEach((input) => {
+    input.addEventListener('focus', () => input.select());
     input.addEventListener('change', () => {
-      const value = Number(input.value);
+      const value = parseBudget(input.value);
       if (!Number.isFinite(value) || value < 0) {
-        input.value = String(store.budgets[input.dataset.category] || 0);
+        input.value = fmtBudget(state.budgets[input.dataset.category] || 0);
         return;
       }
       store.budgets[input.dataset.category] = Math.round(value);

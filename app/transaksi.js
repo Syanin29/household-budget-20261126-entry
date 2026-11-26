@@ -38,6 +38,33 @@ function render() {
 catFilter.addEventListener('change', render);
 memberFilter.addEventListener('change', render);
 
+// Ekspor CSV: semua transaksi bulan ini (termasuk yang ditambahkan pengguna)
+// diunduh lewat Blob — tanpa network, tanpa server.
+function csvCell(value) {
+  const text = String(value);
+  return /[",\n]/.test(text) ? '"' + text.replace(/"/g, '""') + '"' : text;
+}
+
+function exportCsv() {
+  const state = computeState(store);
+  const lines = [['Tanggal', 'Transaksi', 'Kategori', 'Anggota', 'Jumlah (Rp)'].map(csvCell).join(',')];
+  for (const t of state.txs) {
+    lines.push([t.day + ' Nov 2026', t.label, categoryById(t.category).name, t.member, t.amount].map(csvCell).join(','));
+  }
+  const blob = new Blob([lines.join('\n')], { type: 'text/csv;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = 'transaksi-november-2026.csv';
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+}
+
+const exportBtn = document.getElementById('export-csv');
+if (exportBtn) exportBtn.addEventListener('click', exportCsv);
+
 const form = document.getElementById('add-tx');
 const formMsg = document.getElementById('add-tx-msg');
 const formCat = document.getElementById('new-category');

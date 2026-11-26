@@ -6,7 +6,7 @@
 // Kunci rekonsiliasi (dicek tools/verify.mjs):
 //   pemasukan 12.500.000 - terpakai 9.853.000 - tabungan 1.800.000 = sisa aman 847.000
 //   jumlah 48 transaksi = 9.853.000; jumlah 12 kategori = 9.853.000
-//   anggaran 12 kategori = 10.100.000 (di bawah anggaran 247.000)
+//   anggaran 12 kategori = 10.450.000 (di bawah anggaran 597.000)
 
 export const META = {
   household: 'Keluarga Pratama',
@@ -45,10 +45,10 @@ export const CATEGORIES = [
   { id: 'kesehatan', name: 'Kesehatan', group: 'needs', icon: 'kesehatan', budget: 450000, blurb: 'Dokter, obat, dan vitamin keluarga.' },
   { id: 'pendidikan', name: 'Pendidikan Anak', group: 'needs', icon: 'pendidikan', budget: 800000, blurb: 'SPP, les, buku, dan kegiatan sekolah.' },
   { id: 'pakaian', name: 'Pakaian & Perawatan', group: 'needs', icon: 'pakaian', budget: 400000, blurb: 'Seragam, sepatu, dan baju kerja.' },
-  { id: 'hiburan', name: 'Hiburan & Langganan', group: 'wants', icon: 'hiburan', budget: 600000, blurb: 'Streaming, bioskop, musik, dan game anak.' },
+  { id: 'hiburan', name: 'Hiburan & Langganan', group: 'wants', icon: 'hiburan', budget: 750000, blurb: 'Streaming, bioskop, musik, dan game anak.' },
   { id: 'makan-luar', name: 'Makan di Luar & Jajan', group: 'wants', icon: 'makan-luar', budget: 650000, blurb: 'Resto keluarga, jajan kantor, kopi, dan delivery.' },
-  { id: 'hobi', name: 'Hobi & Olahraga', group: 'wants', icon: 'hobi', budget: 350000, blurb: 'Gym, rajut, buku hobi, dan alat pancing.' },
-  { id: 'hadiah', name: 'Hadiah & Sosial', group: 'wants', icon: 'hadiah', budget: 450000, blurb: 'Kado, sumbangan RT, dan bingkisan.' },
+  { id: 'hobi', name: 'Hobi & Olahraga', group: 'wants', icon: 'hobi', budget: 450000, blurb: 'Gym, rajut, buku hobi, dan alat pancing.' },
+  { id: 'hadiah', name: 'Hadiah & Sosial', group: 'wants', icon: 'hadiah', budget: 550000, blurb: 'Kado, sumbangan RT, dan bingkisan.' },
   { id: 'lain', name: 'Lain-lain', group: 'other', icon: 'lain', budget: 400000, blurb: 'Servis rumah, pulsa, peralatan, dan laundry.' },
   { id: 'gadget', name: 'Gadget & Elektronik', group: 'other', icon: 'gadget', budget: 700000, blurb: 'Cicilan HP dan aksesori elektronik.' },
 ];
