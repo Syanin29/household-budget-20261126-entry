@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tutup Buku November 2026 — RumahTangga 50/30/20</title>
+<meta name="description" content="Tutup buku Keluarga Pratama November 2026: rekap pemasukan dan pengeluaran, alokasi sisa aman, dan penutupan bulan.">
+<link rel="stylesheet" href="style.css">
+<script type="module" src="tutupbuku.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <svg viewBox="0 0 32 32" width="34" height="34" aria-hidden="true"><rect x="1.5" y="1.5" width="29" height="29" rx="8" fill="#f2c14e"/><path d="M8 17 16 10l8 7" fill="none" stroke="#1e5c31" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 15.5V22h11v-6.5" fill="none" stroke="#1e5c31" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="19" r="2.4" fill="#1e5c31"/></svg>
+      <span><span class="brand-name">RumahTangga</span><br><span class="brand-tag">Aturan 50/30/20 + Amplop 12 + Simulator Geser</span></span>
+    </a>
+  </div>
+  <nav class="site-nav" aria-label="Navigasi utama">
+    <ul>
+      <li><a href="index.html" data-page="index.html">Dashboard</a></li>
+      <li><a href="anggaran.html" data-page="anggaran.html">Anggaran</a></li>
+      <li><a href="transaksi.html" data-page="transaksi.html">Transaksi</a></li>
+      <li><a href="tren.html" data-page="tren.html">Tren &amp; Laporan</a></li>
+      <li><a href="simulator.html" data-page="simulator.html">Simulator</a></li>
+      <li><a href="tutup-buku.html" data-page="tutup-buku.html">Tutup Buku</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="wrap">
+  <div class="page-intro">
+    <p class="eyebrow">Keluarga Pratama &middot; <span data-month-label>November 2026</span></p>
+    <h1>Tutup buku November 2026</h1>
+    <p>Akhir bulan: rekap sebulan, bagi sisa aman ke tempatnya, lalu tutup bulan. Desember mulai dari nol dengan anggaran yang disalin dari bulan ini.</p>
+  </div>
+
+  <section class="kpi-strip" aria-label="Rekap bulan">
+    <div class="kpi"><div class="kpi-label">Pemasukan</div><div class="kpi-value" id="recap-income">&hellip;</div><div class="kpi-note">Gaji Ayah + gaji Ibu</div></div>
+    <div class="kpi warn"><div class="kpi-label">Terpakai</div><div class="kpi-value" id="recap-spent">&hellip;</div><div class="kpi-note">Dari anggaran total <span id="recap-budget">&hellip;</span></div></div>
+    <div class="kpi"><div class="kpi-label">Tabungan</div><div class="kpi-value" id="recap-savings">&hellip;</div><div class="kpi-note">Sudah dipisah di awal bulan</div></div>
+    <div class="kpi good"><div class="kpi-label">Sisa aman</div><div class="kpi-value" id="recap-remainder">&hellip;</div><div class="kpi-note">Di bawah anggaran <span id="recap-under">&hellip;</span></div></div>
+  </section>
+
+  <div id="alloc-form">
+    <section class="card" aria-label="Rincian per kategori">
+      <h2>Rincian per kategori</h2>
+      <p class="sub">Anggaran vs terpakai vs sisa untuk 12 amplop November.</p>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>Kategori</th><th class="num">Anggaran</th><th class="num">Terpakai</th><th class="num">Sisa</th></tr>
+          </thead>
+          <tbody id="recap-rows"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card" aria-label="Alokasi sisa aman">
+      <h2>Alokasi sisa aman</h2>
+      <p class="sub">Seluruh sisa aman harus dibagi ke tiga pos di bawah — jumlahnya harus pas sebelum bulan bisa ditutup.</p>
+      <div class="form-row">
+        <div class="form-field">
+          <label for="alloc-darurat">Dana darurat (Rp)</label>
+          <input type="number" id="alloc-darurat" min="0" step="1000" value="500000">
+        </div>
+        <div class="form-field">
+          <label for="alloc-tabungan">Tambah tabungan (Rp)</label>
+          <input type="number" id="alloc-tabungan" min="0" step="1000" value="347000">
+        </div>
+        <div class="form-field">
+          <label for="alloc-desember">Belanja awal Desember (Rp)</label>
+          <input type="number" id="alloc-desember" min="0" step="1000" value="0">
+        </div>
+      </div>
+      <p>Dialokasikan: <strong id="alloc-total">&hellip;</strong> &middot; Belum dialokasikan: <strong id="alloc-left">&hellip;</strong></p>
+      <p id="close-msg" class="hint" aria-live="polite"></p>
+      <button type="button" id="close-month">Tutup November 2026</button>
+    </section>
+  </div>
+
+  <section class="card" id="closed-panel" hidden aria-label="Bulan ditutup">
+    <h2>November 2026 sudah ditutup</h2>
+    <p class="sub" id="closed-note"></p>
+    <ul id="closed-lines"></ul>
+    <p><button type="button" class="secondary" id="reopen-month">Buka kembali November 2026</button></p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p><strong>RumahTangga 50/30/20</strong> — alat anggaran keluarga: 6 alat, 12 amplop, 1 angka sisa aman.</p>
+    <p>Data contoh keluarga 4 orang, <span data-month-label>November 2026</span>. Semua angka dihitung dari data transaksi yang sama; situs ini bekerja tanpa internet.</p>
+  </div>
+</footer>
+</body>
+</html>

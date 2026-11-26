@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Transaksi November 2026 — RumahTangga 50/30/20</title>
+<meta name="description" content="48 transaksi Keluarga Pratama November 2026: filter per kategori dan anggota keluarga, plus form tambah transaksi yang benar-benar mengubah total.">
+<link rel="stylesheet" href="style.css">
+<script type="module" src="transaksi.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <svg viewBox="0 0 32 32" width="34" height="34" aria-hidden="true"><rect x="1.5" y="1.5" width="29" height="29" rx="8" fill="#f2c14e"/><path d="M8 17 16 10l8 7" fill="none" stroke="#1e5c31" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 15.5V22h11v-6.5" fill="none" stroke="#1e5c31" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="19" r="2.4" fill="#1e5c31"/></svg>
+      <span><span class="brand-name">RumahTangga</span><br><span class="brand-tag">Aturan 50/30/20 + Amplop 12 + Simulator Geser</span></span>
+    </a>
+  </div>
+  <nav class="site-nav" aria-label="Navigasi utama">
+    <ul>
+      <li><a href="index.html" data-page="index.html">Dashboard</a></li>
+      <li><a href="anggaran.html" data-page="anggaran.html">Anggaran</a></li>
+      <li><a href="transaksi.html" data-page="transaksi.html">Transaksi</a></li>
+      <li><a href="tren.html" data-page="tren.html">Tren &amp; Laporan</a></li>
+      <li><a href="simulator.html" data-page="simulator.html">Simulator</a></li>
+      <li><a href="tutup-buku.html" data-page="tutup-buku.html">Tutup Buku</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="wrap">
+  <div class="page-intro">
+    <p class="eyebrow">Keluarga Pratama &middot; <span data-month-label>November 2026</span></p>
+    <h1>Transaksi November 2026</h1>
+    <p>Setiap rupiah tercatat: tanggal, nama, kategori, dan siapa yang membelanjakan. Saring per kategori atau per anggota keluarga.</p>
+  </div>
+
+  <section class="card" aria-label="Daftar transaksi">
+    <div class="form-row">
+      <div class="form-field">
+        <label for="filter-category">Kategori</label>
+        <select id="filter-category">
+          <option value="all">Semua kategori</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label for="filter-member">Anggota</label>
+        <select id="filter-member">
+          <option value="all">Semua anggota</option>
+          <option value="Ayah">Ayah</option>
+          <option value="Ibu">Ibu</option>
+          <option value="Bersama">Bersama</option>
+        </select>
+      </div>
+    </div>
+    <p class="sub" id="tx-summary">Memuat transaksi&hellip;</p>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Tanggal</th><th>Transaksi</th><th>Kategori</th><th>Anggota</th><th class="num">Jumlah</th></tr>
+        </thead>
+        <tbody id="tx-rows"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card" aria-label="Tambah transaksi">
+    <h2>Tambah transaksi</h2>
+    <p class="sub">Transaksi baru langsung masuk daftar, mengubah total bulan ini di semua halaman, dan tersimpan di peramban ini.</p>
+    <form id="add-tx">
+      <div class="form-row">
+        <div class="form-field">
+          <label for="new-day">Tanggal (1&ndash;30)</label>
+          <input type="number" id="new-day" min="1" max="30" value="28" required>
+        </div>
+        <div class="form-field">
+          <label for="new-label">Nama transaksi</label>
+          <input type="text" id="new-label" placeholder="Contoh: Belanja sayur" required>
+        </div>
+        <div class="form-field">
+          <label for="new-category">Kategori</label>
+          <select id="new-category"></select>
+        </div>
+        <div class="form-field">
+          <label for="new-member">Anggota</label>
+          <select id="new-member">
+            <option value="Ayah">Ayah</option>
+            <option value="Ibu">Ibu</option>
+            <option value="Bersama">Bersama</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="new-amount">Jumlah (Rp)</label>
+          <input type="number" id="new-amount" min="1" step="1000" placeholder="50000" required>
+        </div>
+      </div>
+      <button type="submit">Tambah transaksi</button>
+      <p id="add-tx-msg" class="hint" aria-live="polite"></p>
+    </form>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p><strong>RumahTangga 50/30/20</strong> — alat anggaran keluarga: 6 alat, 12 amplop, 1 angka sisa aman.</p>
+    <p>Data contoh keluarga 4 orang, <span data-month-label>November 2026</span>. Semua angka dihitung dari data transaksi yang sama; situs ini bekerja tanpa internet.</p>
+  </div>
+</footer>
+</body>
+</html>

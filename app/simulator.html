@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Simulator Geser — RumahTangga 50/30/20</title>
+<meta name="description" content="Simulator what-if Keluarga Pratama: geser pengeluaran hiburan, makan di luar, dan belanja harian, lalu lihat sisa aman dan tabungan berubah langsung.">
+<link rel="stylesheet" href="style.css">
+<script type="module" src="simulator.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <svg viewBox="0 0 32 32" width="34" height="34" aria-hidden="true"><rect x="1.5" y="1.5" width="29" height="29" rx="8" fill="#f2c14e"/><path d="M8 17 16 10l8 7" fill="none" stroke="#1e5c31" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 15.5V22h11v-6.5" fill="none" stroke="#1e5c31" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="19" r="2.4" fill="#1e5c31"/></svg>
+      <span><span class="brand-name">RumahTangga</span><br><span class="brand-tag">Aturan 50/30/20 + Amplop 12 + Simulator Geser</span></span>
+    </a>
+  </div>
+  <nav class="site-nav" aria-label="Navigasi utama">
+    <ul>
+      <li><a href="index.html" data-page="index.html">Dashboard</a></li>
+      <li><a href="anggaran.html" data-page="anggaran.html">Anggaran</a></li>
+      <li><a href="transaksi.html" data-page="transaksi.html">Transaksi</a></li>
+      <li><a href="tren.html" data-page="tren.html">Tren &amp; Laporan</a></li>
+      <li><a href="simulator.html" data-page="simulator.html">Simulator</a></li>
+      <li><a href="tutup-buku.html" data-page="tutup-buku.html">Tutup Buku</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="wrap">
+  <div class="page-intro">
+    <p class="eyebrow">Keluarga Pratama &middot; <span data-month-label>November 2026</span></p>
+    <h1>Simulator geser — “bagaimana kalau&hellip;?”</h1>
+    <p>Geser satu pengeluaran dan lihat semua angka berubah langsung: sisa aman, tabungan per bulan, tabungan per tahun, dan berapa hari sisa aman bertahan.</p>
+  </div>
+
+  <div class="grid-2-wrap">
+    <section class="card" aria-label="Pengeluaran yang digeser">
+      <h2>Yang dipotong bulan ini</h2>
+      <p class="sub">Batas geser = jumlah yang memang terpakai di kategori itu bulan ini.</p>
+      <div class="slider-block">
+        <div class="slider-head"><label for="cut-hiburan">Potong hiburan &amp; langganan</label><span class="value" id="cut-hiburan-value">&hellip;</span></div>
+        <input type="range" id="cut-hiburan" min="0" max="520000" step="10000" value="0" aria-describedby="cut-hiburan-value">
+        <div class="hint">Streaming, bioskop, musik, game anak.</div>
+      </div>
+      <div class="slider-block">
+        <div class="slider-head"><label for="cut-makan-luar">Potong makan di luar &amp; jajan</label><span class="value" id="cut-makan-luar-value">&hellip;</span></div>
+        <input type="range" id="cut-makan-luar" min="0" max="685000" step="10000" value="0" aria-describedby="cut-makan-luar-value">
+        <div class="hint">Resto, jajan kantor, kopi, delivery.</div>
+      </div>
+      <div class="slider-block">
+        <div class="slider-head"><label for="cut-makan">Potong belanja harian</label><span class="value" id="cut-makan-value">&hellip;</span></div>
+        <input type="range" id="cut-makan" min="0" max="500000" step="10000" value="0" aria-describedby="cut-makan-value">
+        <div class="hint">Belanja mingguan pasar dan supermarket.</div>
+      </div>
+      <div class="preset-row">
+        <button type="button" class="secondary" id="preset-200k">Potong Rp 200.000 langganan</button>
+        <button type="button" class="secondary" id="reset-sim">Nolkan semua</button>
+      </div>
+    </section>
+
+    <section class="card" aria-label="Hasil simulasi">
+      <h2>Hasilnya, langsung</h2>
+      <p class="sub">Total potongan per bulan</p>
+      <div class="result-big" id="out-cut">&hellip;</div>
+      <div class="result-grid" style="margin-top:16px">
+        <div><div class="kpi-label">Sisa aman baru</div><div class="kpi-value" id="out-remainder">&hellip;</div></div>
+        <div><div class="kpi-label">Tabungan / tahun</div><div class="kpi-value" id="out-yearly">&hellip;</div></div>
+        <div><div class="kpi-label">Tabungan / bulan</div><div class="kpi-value" id="out-savings">&hellip;</div></div>
+      </div>
+      <p style="margin-top:16px"><strong>Sisa aman bertahan <span id="out-buffer">&hellip;</span></strong> pada laju belanja saat ini.</p>
+      <p class="hint" id="out-note" aria-live="polite"></p>
+    </section>
+  </div>
+
+  <section class="card" aria-label="Contoh nyata">
+    <h2>Contoh nyata dari bulan ini</h2>
+    <p>Potong langganan streaming yang jarang ditonton dan satu kali makan di resto diganti masak di rumah: itulah potongan yang dihitung simulator di atas. Uang yang dipotong tidak hilang — ia pindah ke sisa aman dan tabungan, dan simulator menunjukkan persis berapa.</p>
+    <p><a href="anggaran.html">Kembali ke anggaran &rarr;</a></p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p><strong>RumahTangga 50/30/20</strong> — alat anggaran keluarga: 6 alat, 12 amplop, 1 angka sisa aman.</p>
+    <p>Data contoh keluarga 4 orang, <span data-month-label>November 2026</span>. Semua angka dihitung dari data transaksi yang sama; situs ini bekerja tanpa internet.</p>
+  </div>
+</footer>
+</body>
+</html>

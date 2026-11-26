@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tren &amp; Laporan 6 Bulan — RumahTangga 50/30/20</title>
+<meta name="description" content="Tren keuangan Keluarga Pratama Juni–November 2026: pemasukan vs terpakai, komposisi per kelompok, surplus bulanan, dan belanja makan.">
+<link rel="stylesheet" href="style.css">
+<script type="module" src="tren.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <svg viewBox="0 0 32 32" width="34" height="34" aria-hidden="true"><rect x="1.5" y="1.5" width="29" height="29" rx="8" fill="#f2c14e"/><path d="M8 17 16 10l8 7" fill="none" stroke="#1e5c31" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 15.5V22h11v-6.5" fill="none" stroke="#1e5c31" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="19" r="2.4" fill="#1e5c31"/></svg>
+      <span><span class="brand-name">RumahTangga</span><br><span class="brand-tag">Aturan 50/30/20 + Amplop 12 + Simulator Geser</span></span>
+    </a>
+  </div>
+  <nav class="site-nav" aria-label="Navigasi utama">
+    <ul>
+      <li><a href="index.html" data-page="index.html">Dashboard</a></li>
+      <li><a href="anggaran.html" data-page="anggaran.html">Anggaran</a></li>
+      <li><a href="transaksi.html" data-page="transaksi.html">Transaksi</a></li>
+      <li><a href="tren.html" data-page="tren.html">Tren &amp; Laporan</a></li>
+      <li><a href="simulator.html" data-page="simulator.html">Simulator</a></li>
+      <li><a href="tutup-buku.html" data-page="tutup-buku.html">Tutup Buku</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="wrap">
+  <div class="page-intro">
+    <p class="eyebrow">Keluarga Pratama &middot; Juni&ndash;November 2026</p>
+    <h1>Tren &amp; laporan 6 bulan</h1>
+    <p>Enam bulan dalam satu pandangan: ke mana uang pergi, bulan mana yang paling hemat, dan apa yang berubah di November.</p>
+  </div>
+
+  <div class="grid-2-wrap" id="insights" aria-label="Insight berangka"></div>
+
+  <section class="card" aria-label="Pemasukan vs terpakai">
+    <h2>Masuk vs terpakai, Juni&ndash;November 2026</h2>
+    <p class="sub">Pemasukan tetap setiap bulan; yang bergerak adalah pengeluaran.</p>
+    <div id="chart-trend"></div>
+    <div class="legend"><span><i style="background:#2e7d46"></i>Masuk</span><span><i style="background:#c98a1b"></i>Terpakai</span></div>
+  </section>
+
+  <section class="card" aria-label="Komposisi pengeluaran">
+    <h2>Komposisi pengeluaran per bulan</h2>
+    <p class="sub">Kebutuhan selalu jadi bagian terbesar; keinginan yang paling naik-turun.</p>
+    <div id="chart-stacked"></div>
+    <div class="legend"><span><i style="background:#2e7d46"></i>Kebutuhan</span><span><i style="background:#c98a1b"></i>Keinginan</span><span><i style="background:#5b7a99"></i>Lain-lain</span></div>
+  </section>
+
+  <div class="grid-2-wrap">
+    <section class="card" aria-label="Surplus bulanan">
+      <h2>Arus kas: surplus bulanan</h2>
+      <p class="sub">Pemasukan dikurangi terpakai — uang yang tersisa sebelum tabungan.</p>
+      <div id="chart-cash"></div>
+    </section>
+    <section class="card" aria-label="Belanja makan">
+      <h2>Belanja makan 6 bulan</h2>
+      <p class="sub">Kategori terbesar keluarga ini — dan yang paling melonjak di November.</p>
+      <div id="chart-makan"></div>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p><strong>RumahTangga 50/30/20</strong> — alat anggaran keluarga: 6 alat, 12 amplop, 1 angka sisa aman.</p>
+    <p>Data contoh keluarga 4 orang, <span data-month-label>November 2026</span>. Semua angka dihitung dari data transaksi yang sama; situs ini bekerja tanpa internet.</p>
+  </div>
+</footer>
+</body>
+</html>

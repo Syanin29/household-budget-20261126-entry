@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anggaran 12 Amplop — RumahTangga 50/30/20</title>
+<meta name="description" content="Anggaran 12 amplop Keluarga Pratama November 2026: anggaran, terpakai, sisa, dan status tiap kategori. Anggaran bisa diedit dan tersimpan.">
+<link rel="stylesheet" href="style.css">
+<script type="module" src="anggaran.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <svg viewBox="0 0 32 32" width="34" height="34" aria-hidden="true"><rect x="1.5" y="1.5" width="29" height="29" rx="8" fill="#f2c14e"/><path d="M8 17 16 10l8 7" fill="none" stroke="#1e5c31" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 15.5V22h11v-6.5" fill="none" stroke="#1e5c31" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="19" r="2.4" fill="#1e5c31"/></svg>
+      <span><span class="brand-name">RumahTangga</span><br><span class="brand-tag">Aturan 50/30/20 + Amplop 12 + Simulator Geser</span></span>
+    </a>
+  </div>
+  <nav class="site-nav" aria-label="Navigasi utama">
+    <ul>
+      <li><a href="index.html" data-page="index.html">Dashboard</a></li>
+      <li><a href="anggaran.html" data-page="anggaran.html">Anggaran</a></li>
+      <li><a href="transaksi.html" data-page="transaksi.html">Transaksi</a></li>
+      <li><a href="tren.html" data-page="tren.html">Tren &amp; Laporan</a></li>
+      <li><a href="simulator.html" data-page="simulator.html">Simulator</a></li>
+      <li><a href="tutup-buku.html" data-page="tutup-buku.html">Tutup Buku</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="wrap">
+  <div class="page-intro">
+    <p class="eyebrow">Keluarga Pratama &middot; <span data-month-label>November 2026</span></p>
+    <h1>Anggaran 12 amplop</h1>
+    <p>Setiap rupiah punya amplopnya sendiri. Klik angka anggaran untuk mengubahnya — total di bawah dan dashboard ikut berubah, dan perubahan tersimpan di peramban ini.</p>
+  </div>
+
+  <section class="card" aria-label="Tabel anggaran">
+    <p class="sub" id="budget-asof">Memuat anggaran&hellip;</p>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Kategori</th><th class="num">Anggaran</th><th class="num">Terpakai</th><th class="num">Sisa</th><th>Status</th></tr>
+        </thead>
+        <tbody id="budget-rows"></tbody>
+        <tfoot><tr class="total-row" id="budget-totals"></tr></tfoot>
+      </table>
+    </div>
+    <p class="ok-text" id="saved-note" aria-live="polite"></p>
+    <p><button type="button" class="secondary" id="reset-budgets">Kembalikan anggaran awal</button></p>
+  </section>
+
+  <section class="card" aria-label="Cara membaca amplop">
+    <h2>Cara membaca amplop</h2>
+    <p class="sub">Tiga lampu, tiga tindakan.</p>
+    <p><span class="lamp good">Aman</span> — terpakai di bawah 90% anggaran. Lanjutkan seperti biasa.</p>
+    <p><span class="lamp warn">Hampir habis</span> — terpakai 90% anggaran atau lebih. Tahan belanja kategori ini sampai gajian.</p>
+    <p><span class="lamp bad">Melewati anggaran</span> — terpakai sudah di atas anggaran. Tutup keran kategori ini, atau pindahkan dana dari amplop yang masih longgar.</p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p><strong>RumahTangga 50/30/20</strong> — alat anggaran keluarga: 6 alat, 12 amplop, 1 angka sisa aman.</p>
+    <p>Data contoh keluarga 4 orang, <span data-month-label>November 2026</span>. Semua angka dihitung dari data transaksi yang sama; situs ini bekerja tanpa internet.</p>
+  </div>
+</footer>
+</body>
+</html>
