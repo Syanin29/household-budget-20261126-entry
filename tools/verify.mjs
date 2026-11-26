@@ -79,6 +79,11 @@ check('makan-naik-18-persen', makanGrowth === 18, 'ditemukan ' + makanGrowth + '
 check('vintage-november-2026', META.monthLabel === 'November 2026' && nov.label === 'Nov 2026'
   && MONTHS.every((m) => m.label.endsWith('2026')), 'label bulan di luar 2026');
 check('semua-transaksi-november', TRANSACTIONS.every((t) => t.day >= 1 && t.day <= 30 && t.amount > 0));
+const anggotaSah = new Set(['Ayah', 'Ibu', 'Bersama']);
+const idKategori = new Set(CATEGORIES.map((c) => c.id));
+const referensiOk = TRANSACTIONS.every((t) => idKategori.has(t.category)
+  && anggotaSah.has(t.member) && typeof t.label === 'string' && t.label.trim().length > 0);
+check('transaksi-referensi-valid', referensiOk, 'kategori/anggota/label tidak dikenal di transaksi');
 
 // ---------- C: kebersihan sumber ----------
 const sourceFiles = readdirSync(appDir).filter((f) => /\.(js|html|css)$/.test(f));
